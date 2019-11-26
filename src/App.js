@@ -1,64 +1,31 @@
 import React from 'react';
 import './App.css';
-import Card from './components/card';
+import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends React.Component {
-  constructor(){
-    super();
-    this.state=[
-      {
-          nom:'youssef boutakourt',
-          filiere:'ISIL',
-          image:'youssef boutakourt?set=set2'
-      },
-      {
-        nom:'bari ayoub',
-        filiere:'GODT',
-        image:'bari ayoub?set=set2'
-      },
-      {
-        nom:'amine nazih',
-        filiere:'TM',
-        image:'amine nazih?set=set2'    
-      },
-      {
-        nom:'ghoudan ayoub',
-        filiere:'GI',
-        image:'ghoudan ayoub?set=set2'     
-      },
-      {
-        nom:'karkaih achraf',
-        filiere:'TM',
-        image:'karkaih achraf?set=set2'     
-      },
-      {
-        nom:'morad zakar',
-        filiere:'MT',
-        image:'morad zakar?set=set2'    
-      },
-      {
-        nom:'yassir soulaimani',
-        filiere:'MGE',
-        image:'yassir soulaimani?set=set2'      
-      }
-          ]
-  }
-
+constructor(props){
+  super(props);
+this.state = {
+ textval :''
+}
+this.onchangeText = this.onchangeText.bind(this);
+}
+onchangeText(e){
+this.setState({
+  textval : e.target.value
+})
+}
   render() {
 
-    
     return(
+      <div className="container">
+        <div className="row"><div className="col-sm-12"><h1>REACT APP </h1> <h2>ON CHANGE METHOD</h2></div></div>
+        <div className="row">
+          <div className="col-sm-6"><textarea value={this.state.textval} onChange={this.onchangeText} className="form-control" rows={16}></textarea> </div>
+          <div className="col-sm-6">texte apres  <br/> {this.state.textval}</div>
 
-<div className="App">
+        </div>
 
-    {
-
-
-
-this.state.map((item,i) =>   <Card key={i} nom={item.nom} filiere={item.filiere} url={item.image}/>)
-
-    }
-    
-    </div>
+      </div>
 
     );
   }
