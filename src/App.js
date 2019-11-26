@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import marked from 'marked'
+import MarkedArea from './components/MarkedArea';
+import TexteArea from './components/textarea';
+import Headers from './components/headers';
+
 class App extends React.Component {
 constructor(props){
   super(props);
@@ -14,15 +19,15 @@ this.setState({
   textval : e.target.value
 })
 }
+
   render() {
 
     return(
       <div className="container">
-        <div className="row"><div className="col-sm-12"><h1>REACT APP </h1> <h2>ON CHANGE METHOD</h2></div></div>
+        <Headers  />
         <div className="row">
-          <div className="col-sm-6"><textarea value={this.state.textval} onChange={this.onchangeText} className="form-control" rows={16}></textarea> </div>
-          <div className="col-sm-6">texte apres  <br/> {this.state.textval}</div>
-
+          <div className="col-sm-6"><TexteArea value={this.state.textval} onchng= {this.onchangeText}/></div>
+          <MarkedArea dnghtml ={this.state.textval} />
         </div>
 
       </div>
@@ -30,5 +35,6 @@ this.setState({
     );
   }
 }
+
 
 export default App;
