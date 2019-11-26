@@ -6,13 +6,13 @@ class Card extends React.Component {
     return (
 
         <div className="card">
-          
-           
-
-<img  className="img" src={"https://robohash.org/"+this.props.url}/>    
-<div className="textA">  {this.props.nom} <br/>
-            {this.props.filiere}</div>
-    </div>
+            <img  className="img" src={"https://robohash.org/"+this.props.url}/>    
+            <div className="textA"> 
+              {this.props.nom} 
+              <br/>
+              {this.props.filiere}
+            </div>
+        </div>
     );
   }
 }
