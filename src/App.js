@@ -10,6 +10,12 @@ import Navbar from './components/Navbar';
 import About from './pages/About';
 import Articles from './pages/Articles';
 import Home from './pages/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class App extends React.Component {
 constructor(props){
@@ -26,7 +32,6 @@ password:'',
 this.SignIn = this.SignIn.bind(this);
 this.onchangeUsr = this.onchangeUsr.bind(this);
 this.onchangePass = this.onchangePass.bind(this);
-this.OnClick = this.OnClick.bind(this);
 
 // this.onchangeText = this.onchangeText.bind(this);
 }
@@ -61,18 +66,13 @@ if(this.state.username == 'yassoub' && this.state.password == 'password'){
 
   })}
 }
-OnClick(e){
-  this.setState({
-    page: e.target.name
-    
 
-  })
-}
   render() {
 
     return(
 <div className="container">
        {!this.state.loggedIn ? 
+     
          <form   style={{margin: '20%'}} onSubmit={this.SignIn} >
            {this.state.FalseCred ?   <div className='alert alert-danger'>Erreur false credentials</div> :""}
               <div className="from-group">
@@ -87,19 +87,27 @@ OnClick(e){
 
           </form>
            :  
+           <Router>
+               <Navbar  />
+               <div className="alert alert-success">Logged In successfully</div>
+
+           <Switch>
+             <Route exact path='/' component={Home} />
+             <Route exact path='/articles' component={Articles} />
+             <Route exact path='/about' component={About} />
+    
+             </Switch>
+       
             <div>           
-              <Navbar click = {this.OnClick} />
-              <div className="alert alert-success">Logged In successfully</div>
-              {this.state.page == 'home' ? <Home /> :'' }
-              {this.state.page == 'about' ? <About /> :'' }
-              {this.state.page == 'articles' ? <Articles /> :'' }
+            
+           
 
             </div>
-          
+            </Router>
           }
       
       
-     
+    
 
       </div>
 

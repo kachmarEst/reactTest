@@ -13,7 +13,7 @@ articles:article
   render() {
     return (
         <div className="articles">
-            {  this.state.articles.map((item,i) =>   <Card key={i} nom={item.nom} titre={item.titre} content={item.content}/>)  }
+            {  this.state.articles.map((item,i) =>   <Card key={i} nom={item.nom} titre={item.titre}  content={item.content}/>)  }
         </div>
     );
   }
