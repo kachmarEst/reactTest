@@ -16,6 +16,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import ArticlesFull from './pages/ArticleFull';
 
 class App extends React.Component {
 constructor(props){
@@ -94,6 +95,8 @@ if(this.state.username == 'yassoub' && this.state.password == 'password'){
            <Switch>
              <Route exact path='/' component={Home} />
              <Route exact path='/articles' component={Articles} />
+             <Route exact path='/articles/:nom' component={ArticlesFull} />
+
              <Route exact path='/about' component={About} />
     
              </Switch>
